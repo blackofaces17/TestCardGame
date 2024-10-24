@@ -74,7 +74,7 @@ const MemoryGame = () => {
     </div>
   ) : (
     <div className="game-victory">
-      VICTORY!!!!!!!!!!!!!!---------------
+      <div>VICTORY!!!!!!!!!!!!!!</div>
       <button onClick={() => reset()}>RESET</button>
     </div>
   );
