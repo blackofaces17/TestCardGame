@@ -7,6 +7,7 @@ const MemoryGame = () => {
   const [cards, setCards] = useState([]);
   const [matches, setMatches] = useState(0);
   const [victory, setVictory] = useState(false);
+  const [completedValues, setCompletedValues] = useState([]);
   const cardData = [
     { id: 1, value: "🐶" },
     { id: 2, value: "🐱" },
@@ -21,6 +22,7 @@ const MemoryGame = () => {
     if (cards.length == 2) {
       if (cards[0] === cards[1]) {
         setMatches(matches + 1);
+        setCompletedValues([...completedValues, cards[0]]);
         setCards([]);
       } else {
         setTimeout(() => {
@@ -37,7 +39,9 @@ const MemoryGame = () => {
   }, [matches]);
 
   const cardClick = (value) => {
-    setCards([...cards, value]);
+    if (!completedValues.find((item) => item === value)) {
+      setCards([...cards, value]);
+    }
   };
 
   let shuffledData = [...cardData, ...cardData];
@@ -45,8 +49,8 @@ const MemoryGame = () => {
     setMatches(0);
     setCards([]);
     setVictory(false);
+    setCompletedValues([]);
   };
-
   return !victory ? (
     <div className="memorygame-root">
       <div>matches: {matches}</div>
@@ -58,6 +62,8 @@ const MemoryGame = () => {
                 value={cardItem.value}
                 cardClick={(value) => cardClick(value)}
                 isFlipped={cards}
+                checkSelected={completedValues}
+                completedValues={completedValues}
               />
             </div>
           );

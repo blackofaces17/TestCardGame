@@ -1,11 +1,15 @@
 import { useState } from "react";
 import "./card.css";
-const Card = ({ value, isFlipped, cardClick }) => {
+const Card = ({ value, isFlipped, cardClick, completedValues }) => {
   const [valueSign, showValueSign] = useState(false);
   const sentClick = (value) => {
     showValueSign(true);
     cardClick(value);
-    if (isFlipped.length > 0 && !isFlipped.find((item) => item === value)) {
+    if (
+      isFlipped.length > 0 &&
+      !isFlipped.find((item) => item === value) &&
+      !completedValues.find((item) => item === value)
+    ) {
       setTimeout(() => {
         showValueSign(false);
       }, [500]);
