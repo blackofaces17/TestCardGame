@@ -2,6 +2,8 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  padding-left: 2rem;
+  border: 5rem;
 }
 .game-victory {
   height: 100vh;
