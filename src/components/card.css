@@ -1,0 +1,8 @@
+.card-root {
+  background-color: grey;
+  margin: 1rem;
+  width: 10rem;
+  height: 8rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
