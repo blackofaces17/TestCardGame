@@ -53,7 +53,9 @@ const MemoryGame = () => {
   };
   return !victory ? (
     <div className="memorygame-root">
-      <div>matches: {matches}</div>
+      <div className="memorygame-head">
+        <div>matches: {matches}</div>
+      </div>
       <div className="memorygame-displaycards">
         {shuffledData.map((cardItem, index) => {
           return (
@@ -71,7 +73,7 @@ const MemoryGame = () => {
       </div>
     </div>
   ) : (
-    <div>
+    <div className="game-victory">
       VICTORY!!!!!!!!!!!!!!---------------
       <button onClick={() => reset()}>RESET</button>
     </div>
